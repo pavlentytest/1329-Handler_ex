@@ -14,7 +14,7 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button btn1,btn2;
+    private Button btn1,btn2,btn3;
     private TextView tv;
     private Handler h;
 
@@ -32,6 +32,14 @@ public class MainActivity extends AppCompatActivity {
         btn1 = findViewById(R.id.button);
         btn2 = findViewById(R.id.button2);
         tv = findViewById(R.id.textView);
+        btn3 = findViewById(R.id.button3);
+        btn3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Thread weather = new Thread(new HTTPRequest(h));
+                weather.start();
+            }
+        });
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
